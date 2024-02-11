@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from scipy.io import mmread
 
-# Replace 'your_file.mtx' with the actual path to your Matrix Market file
 file_path = 'power-1138-bus.mtx'
 
 # Read the Matrix Market file using scipy
@@ -14,12 +13,6 @@ sparse_matrix = mmread(file_path)
 graph = nx.convert_matrix.from_scipy_sparse_array(sparse_matrix)
 self_loops = list(nx.selfloop_edges(graph))
 graph.remove_edges_from(self_loops)
-
-print(graph)  # You can also try other layouts like nx.circular_layout()
-
-
-# Draw the graph with straight edges
-# Function to visualize the grap
 
 # Function to find communities in the graph
 def find_communities(graph):
@@ -79,10 +72,6 @@ def visualize_graph(graph, communities, community=True):
     node_labels = {node: str(node) if node in important_nodes.values() else '' for node in graph.nodes()}
     nx.draw_networkx_labels(graph, pos=pos, labels=node_labels)
 
-
-# Sample power grid graph (replace with your actual graph)
-
-# Visualize the graph
 # Find communities in the graph
 communities = find_communities(graph)
 
@@ -96,9 +85,9 @@ for centrality_name, node in most_important_nodes.items():
 
 visualize_graph(graph, communities, community=True)
 
+# Display the plot
 plt.title("Power network divided in communities")
 plt.show()
-# Display the plot
 
 
 
